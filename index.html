@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Store | Expert Mode</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
         :root {
             --bg-color: #000000;
@@ -33,90 +34,160 @@
             z-index: 100;
         }
 
-        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
 
-        nav a { color: var(--accent-color); text-decoration: none; margin-left: 20px; font-size: 0.9rem; }
+        nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 5%; }
+        nav a:hover {
+            opacity: 1;
+        }
 
-        .hero { text-align: center; padding: 80px 0; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .hero p { color: var(--text-secondary); font-size: 1.2rem; }
+        .hero {
+            padding: 100px 5%;
+            text-align: center;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+        }
 
-        /* Сетка магазина */
-        .shop-grid {
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 80px);
+            margin: 0;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .container {
+            padding: 50px 5%;
+        }
+
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 50px;
         }
 
         .product-card {
             background: var(--card-bg);
             border: 1px solid #222;
-            padding: 20px;
-            border-radius: 0px; /* Острые углы для премиум-вида */
+            border-radius: 12px;
+            overflow: hidden;
             transition: transform 0.3s ease;
         }
 
-        .product-card:hover { transform: translateY(-5px); border-color: #444; }
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #444;
+        }
 
-        .product-img { width: 100%; height: 200px; background: #222; margin-bottom: 15px; }
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #1a1a1a;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+        }
+
+        .product-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 15px;
+        }
 
         .btn {
             background: var(--accent-color);
             color: var(--bg-color);
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 700;
             cursor: pointer;
-            font-weight: 600;
             width: 100%;
-            margin-top: 15px;
+            transition: 0.3s;
         }
 
-        .auth-buttons { display: flex; gap: 10px; }
-        
+        .btn:hover {
+            background: #ccc;
+        }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero { padding: 60px 5%; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">BLACK.STORE</div>
-    <nav>
-        <a href="#shop">Магазин</a>
-        <a href="#" id="login-btn">Войти</a>
-    </nav>
-</header>
+    <header>
+        <div class="logo">BLACK.STORE</div>
+        <nav>
+            <a href="#">Магазин</a>
+            <a href="/admin/">Войти</a>
+        </nav>
+    </header>
 
-<div class="container">
     <section class="hero">
         <h1>Exclusive Collection</h1>
         <p>Добро пожаловать в магазин будущего на GitHub Pages.</p>
     </section>
 
-    <section id="shop">
+    <div class="container">
         <h2>Магазин</h2>
-        <div class="shop-grid">
+        <div class="grid" id="product-list">
             <div class="product-card">
                 <div class="product-img"></div>
-                <h3>Товар #1</h3>
-                <p style="color: var(--text-secondary)">Описание премиального товара.</p>
-                <div class="price">$99.00</div>
-                <button class="btn">В корзину</button>
-            </div>
-            <div class="product-card">
-                <div class="product-img"></div>
-                <h3>Товар #2</h3>
-                <p style="color: var(--text-secondary)">Описание премиального товара.</p>
-                <div class="price">$149.00</div>
-                <button class="btn">В корзину</button>
+                <div class="product-info">
+                    <h3 class="product-title">Товар #1</h3>
+                    <p class="product-desc">Описание премиального товара.</p>
+                    <span class="product-price">$99.00</span>
+                    <button class="btn">В корзину</button>
+                </div>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
 
 </body>
 </html>
