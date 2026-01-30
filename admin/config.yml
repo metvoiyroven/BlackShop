@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: metvoiyroven/BlackShop
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "products"
+    label: "Товары"
+    folder: "_products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Название", name: "title", widget: "string"}
+      - {label: "Цена", name: "price", widget: "string"}
+      - {label: "Картинка", name: "image", widget: "image"}
+      - {label: "Описание", name: "body", widget: "markdown"}
