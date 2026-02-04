@@ -17,3 +17,16 @@ collections:
       - {label: "Цена", name: "price", widget: "number"}
       - {label: "Фото", name: "image", widget: "image"}
       - {label: "Описание", name: "body", widget: "markdown"}
+
+  - name: "settings"
+    label: "Настройки сайта"
+    delete: false # Нельзя удалять главную
+    editor:
+      preview: false
+    files:
+      - name: "homepage"
+        label: "Главная страница"
+        file: "content/homepage.md"
+        fields:
+          - {label: "Заголовок магазина", name: "site_title", widget: "string"}
+          - {label: "Подзаголовок", name: "site_subtitle", widget: "string"}
